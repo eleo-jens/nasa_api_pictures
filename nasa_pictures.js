@@ -1,3 +1,5 @@
+let reussi = true;
+
 document.getElementById('valider').addEventListener("click", event => {
     let count = document.getElementById('count').value;
     let thumbs = document.getElementById('thumbs-select').value;
@@ -34,8 +36,12 @@ document.getElementById('valider').addEventListener("click", event => {
     };
 
     // un peu triste de ne pas afficher de résultats pour celles.ceux qui n'ont pas bien mis 3 ou true
-    if (count === "3" && thumbs == "true"){
+    if (count === "3" && thumbs == "true" && reussi){
+        reussi = false;
         xhr.open("GET", "https://api.nasa.gov/planetary/apod?api_key=3mpbloKSNnuBe6UpTH6LuvEpHLuMstO6NcviGMEj&count=3&thumbs=true");
         xhr.send(null);
+    }
+    else {
+        $('#myModal').modal('show');
     }
 });
